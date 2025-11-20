@@ -1,0 +1,162 @@
+/* ============================
+   Paleta basada en tu logo
+   ============================ */
+:root{
+  /* Página y tarjeta */
+  --page-bg:#FFEB99;          /* amarillo claro del fondo */
+  --panel:#ffffff;            /* tarjeta blanca */
+  --ink:#0C355A;              /* azul oscuro (texto principal) */
+  --ink-muted:#1565C0;        /* azul medio (texto secundario) */
+  --ring:#e0e7ff;             /* borde suave azulado */
+  --shadow:0 14px 44px rgba(12,53,90,.15); /* sombra azulada sutil */
+
+  /* Botones */
+  --call:#F6D550;             /* Llamar: azul oscuro */
+  --call-ink:#ffffff;
+  --wa:#25D366;               /* WhatsApp: verde oficial */
+  --wa-ink:#052e19;
+  --mail:#1565C0;             /* Correo: azul medio */
+  --mail-ink:#ffffff;
+
+  --radius:22px;
+}
+
+/* ============================
+   Base y tipografía
+   ============================ */
+*{ box-sizing:border-box }
+html,body{
+  margin:0; padding:0;
+  background:var(--page-bg);
+  color:var(--ink);
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+a{ color:inherit; text-decoration:none }
+
+/* Si existía, ya no bloqueamos el scroll del body */
+body.modal-lock{ overflow:auto; }
+
+/* ============================
+   Pop-up SIEMPRE visible
+   (no se puede cerrar)
+   ============================ */
+.modal{
+  position:fixed;
+  inset:0;
+  display:grid;
+  place-items:start;       /* que empiece arriba */
+  overflow:auto;           /* permite scroll en móvil */
+  padding:24px 16px;       /* respiración alrededor de la tarjeta */
+  z-index:0;
+}
+.modal__backdrop{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.25);
+  backdrop-filter:blur(2px);
+  z-index:0;
+}
+.modal__panel{
+  position:relative;
+  z-index:1;
+  width:min(92vw, 720px);
+  margin:0 auto;           /* centrado horizontal */
+  max-height:calc(100svh - 48px);  /* tarjeta no supera alto pantalla */
+  overflow:auto;           /* y si hace falta, scrollea dentro */
+  background:var(--panel);
+  color:var(--ink);
+  border:2px solid var(--ink);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:24px 20px 20px;
+  text-align:center;
+}
+
+/* ============================
+   Tarjeta interna
+   ============================ */
+.logo{
+  width:150px; height:150px; border-radius:50%;
+  margin:6px auto 14px;
+  overflow:hidden; display:grid; place-items:center;
+  background:#ffffff;
+  border:3px solid var(--ink);
+}
+.logo img{ width:100%; height:100%; object-fit:cover }
+
+.title{
+  margin:6px 0 8px;
+  font-size:clamp(22px,5vw,30px);
+  font-weight:900;
+  letter-spacing:.2px;
+  color:var(--ink);
+}
+.meta{
+  margin:2px 0;
+  color:var(--ink-muted);
+  font-size:15px;
+}
+.driver{
+  margin:6px 0 10px;
+  font-size:16px;
+  color:var(--ink);
+}
+.subttl{
+  margin:14px 0 8px;
+  font-size:16px;
+  font-weight:900;
+  color:var(--ink-muted);
+  text-transform:uppercase;
+  letter-spacing:.4px;
+}
+
+/* ============================
+   Botones grandes
+   ============================ */
+.actions-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin:10px 0 12px;
+}
+.full{ width:100%; }
+
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  height:56px; padding:0 18px;
+  border-radius:14px; border:1px solid transparent;
+  font-weight:900; letter-spacing:.2px;
+  box-shadow:0 2px 0 rgba(12,53,90,.25);
+  transition:transform .06s ease, box-shadow .06s ease, filter .1s ease;
+  user-select:none;
+  cursor:pointer;
+}
+.btn:hover{ transform:translateY(1px); box-shadow:0 1px 0 rgba(12,53,90,.25); filter:brightness(1.03) }
+.btn:active{ transform:translateY(2px); box-shadow:none }
+
+.btn-call{ background:var(--call); color:var(--call-ink) }
+.btn-wa  { background:var(--wa);   color:var(--wa-ink) }
+.btn-mail{ background:var(--mail); color:var(--mail-ink) }
+
+/* Separadores y textos auxiliares */
+.sep{ margin:14px 0 10px; height:1px; border:0; background:var(--ring) }
+.thanks{ color:var(--ink-muted); margin:10px 0 0 }
+
+/* ============================
+   Accesibilidad
+   ============================ */
+a:focus-visible, button:focus-visible{
+  outline:3px solid #60a5fa;
+  outline-offset:2px;
+}
+
+/* ============================
+   Responsive
+   ============================ */
+@media (max-width:520px){
+  .modal{ padding:16px 12px; }
+  .modal__panel{ max-height:calc(100svh - 32px); padding:20px 14px; }
+  .actions-row{ grid-template-columns:1fr; }
+}
