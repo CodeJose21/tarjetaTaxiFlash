@@ -3,8 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Confía Taxi · Contacto</title>
+  <title>Taxi Flash · Contacto</title>
   <link rel="stylesheet" href="style.css"/>
+
+  <!-- Pequeño apoyo de estilos para mostrar/ocultar conductores -->
+  <style>
+    .driver-section { display: none; }
+    .driver-section.is-active { display: block; }
+  </style>
 </head>
 <body>
 
@@ -17,12 +23,12 @@
 
       <!-- Logo + datos -->
       <div class="logo">
-        <img src="assets/Logo-ConfiaTaxi.jpg" alt="Logo empresa">
+        <img src="assets/Logo-TaxiFlash.png" alt="Logo empresa">
       </div>
 
-      <h1 id="cardTitle" class="title">Confía Taxi Málaga S.L.</h1>
-      <p class="meta">Licencia nº 1109 · Málaga</p>
-      <p class="meta">Matrícula: 3790 JXP</p>
+      <h1 id="cardTitle" class="title">Taxi Flash Málaga S.L.</h1>
+      <p class="meta">Licencia nº 366 · Málaga</p>
+      <p class="meta">Matrícula: 1231 LDH</p>
 
       <!-- Contacto empresa -->
       <h2 class="subttl">Contacta con nosotros</h2>
@@ -30,20 +36,63 @@
         <a class="btn btn-call" href="tel:+34640161643" role="button" aria-label="Llamar a la empresa">📞 Llamar</a>
         <a class="btn btn-wa" href="https://wa.me/qr/ZWXJXMBFZ3MQG1" target="_blank" rel="noopener" role="button" aria-label="WhatsApp a la empresa">💬 WhatsApp</a>
       </div>
-      <a class="btn btn-mail full" href="mailto:confiataxisl@gmail.com" role="button" aria-label="Correo a la empresa">✉️ Correo electrónico</a>
+      <a class="btn btn-mail full" href="mailto:taxiflashsl@gmail.com" role="button" aria-label="Correo a la empresa">✉️ Correo electrónico</a>
 
       <hr class="sep">
 
-      <!-- Conductor -->
-      <h2 class="subttl">Pedro Moreno</h2>
-      <p class="driver">Conductor</p>
-      <div class="actions-row">
-        <a class="btn btn-call" href="tel:+34619422215" role="button" aria-label="Llamar al conductor">📞 Llamar al conductor</a>
-        <a class="btn btn-wa" href="https://wa.me/qr/CEN5GBSLDTQDD1" target="_blank" rel="noopener" role="button" aria-label="WhatsApp al conductor">💬 WhatsApp conductor</a>
-      </div>
+      <!-- =================== CONDUCTOR 1: AYMAN =================== -->
+      <section id="driver-ayman" class="driver-section">
+        <h2 class="subttl">Ayman Saihi Rafiq</h2>
+        <p class="driver">Conductor</p>
+        <div class="actions-row">
+          <a class="btn btn-call" href="tel:+34619422215" role="button" aria-label="Llamar al conductor">📞 Llamar al conductor</a>
+          <a class="btn btn-wa" href="https://wa.me/qr/CEN5GBSLDTQDD1" target="_blank" rel="noopener" role="button" aria-label="WhatsApp al conductor Ayman">💬 WhatsApp conductor</a>
+        </div>
+      </section>
+
+      <!-- =================== CONDUCTOR 2: EDITA DATOS =================== -->
+      <section id="driver-roberto" class="driver-section">
+        <h2 class="subttl">Roberto Gil Muñoz</h2>
+        <p class="driver">Conductor</p>
+        <div class="actions-row">
+          <a class="btn btn-call" href="tel:+34000000000" role="button" aria-label="Llamar al conductor">📞 Llamar al conductor</a>
+          <a class="btn btn-wa" href="https://wa.me/qr/TU_CODIGO_QR_AQUI" target="_blank" rel="noopener" role="button" aria-label="WhatsApp al segundo conductor">💬 WhatsApp conductor</a>
+        </div>
+      </section>
 
       <p class="thanks">Gracias por confiar en nosotros 🚖</p>
     </div>
   </div>
+
+  <script>
+    function getDriverFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get('driver'); // "ayman", "segundo", etc.
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const driver = getDriverFromUrl();
+      const sections = document.querySelectorAll('.driver-section');
+      sections.forEach(sec => sec.classList.remove('is-active'));
+
+      let targetId;
+      switch (driver) {
+        case 'ayman':
+          targetId = 'driver-ayman';
+          break;
+        case 'roberto':
+          targetId = 'driver-roberto';
+          break;
+        default:
+          // Por defecto, si no hay parámetro o no coincide, mostramos Ayman (puedes cambiarlo)
+          targetId = 'driver-ayman';
+      }
+
+      const active = document.getElementById(targetId);
+      if (active) {
+        active.classList.add('is-active');
+      }
+    });
+  </script>
 </body>
 </html>

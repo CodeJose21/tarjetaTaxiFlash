@@ -3,11 +3,11 @@
    ============================ */
 :root{
   /* Página y tarjeta */
-  --page-bg:#FFEB99;          /* amarillo claro del fondo */
+  --page-bg:#F2D774;          /* amarillo claro del fondo */
   --panel:#ffffff;            /* tarjeta blanca */
-  --ink:#0C355A;              /* azul oscuro (texto principal) */
-  --ink-muted:#1565C0;        /* azul medio (texto secundario) */
-  --ring:#e0e7ff;             /* borde suave azulado */
+  --ink:#F4C72F;              /* azul oscuro (texto principal) */
+  --ink-muted:#B8951F;        /* azul medio (texto secundario) */
+  --ring:#f1ffc7;             /* borde suave azulado */
   --shadow:0 14px 44px rgba(12,53,90,.15); /* sombra azulada sutil */
 
   /* Botones */
@@ -15,7 +15,7 @@
   --call-ink:#ffffff;
   --wa:#25D366;               /* WhatsApp: verde oficial */
   --wa-ink:#052e19;
-  --mail:#1565C0;             /* Correo: azul medio */
+  --mail:#f97c1c;             /* Correo: azul medio */
   --mail-ink:#ffffff;
 
   --radius:22px;
