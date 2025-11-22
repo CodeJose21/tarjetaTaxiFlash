@@ -3,7 +3,7 @@
    ============================ */
 :root{
   /* Página y tarjeta */
-  --page-bg:#F2D774;          /* amarillo claro del fondo */
+  --page-bg:#f20089;          /* amarillo claro del fondo #F2D774*/
   --panel:#ffffff;            /* tarjeta blanca */
   --ink:#F4C72F;              /* azul oscuro (texto principal) */
   --ink-muted:#B8951F;        /* azul medio (texto secundario) */
